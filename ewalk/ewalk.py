@@ -1,21 +1,28 @@
 # -*- coding: utf-8 -*-
 
-import requests
-import settings
+import re
 import pprint
+import settings
+import datetime
+from ebaysdk.exception import ConnectionError
+from ebaysdk.finding import Connection
 
-url = 'http://svcs.ebay.com/services/search/FindingService/v1'
-url += "?OPERATION-NAME=findItemsByKeywords"
-url += "&SERVICE-VERSION=1.0.0"
-url += "&SECURITY-APPNAME="
-url += settings.APP_ID
-url += "&GLOBAL-ID=EBAY-US"
-url += "&RESPONSE-DATA-FORMAT=JSON"
-url += "&callback=_cb_findItemsByKeywords"
-url += "&REST-PAYLOAD"
-url += "&keywords=harry%20potter"
-url += "&paginationInput.entriesPerPage=3"
-r = requests.post(url)
+try:
+    api = Connection(appid=settings.APP_ID, config_file=None)
+    response = api.execute('findItemsAdvanced', {'keywords': 'legos'})
+
+    assert(response.reply.ack == 'Success')
+    assert(type(response.reply.timestamp) == datetime.datetime)
+    assert(type(response.reply.searchResult.item) == list)
+
+    item = response.reply.searchResult.item[0]
+    assert(type(item.listingInfo.endTime) == datetime.datetime)
+    assert(type(response.dict()) == dict)
+
+except ConnectionError as e:
+    print(e)
+    print(e.response.dict())
 
 pp = pprint.PrettyPrinter(indent=4)
-pp.pprint(r.text)
+pp.pprint(response.dict())
+
