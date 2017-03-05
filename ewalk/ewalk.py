@@ -1,28 +1,40 @@
 # -*- coding: utf-8 -*-
 
-import re
+from ewalk import models
 import pprint
 import settings
 import datetime
-from ebaysdk.exception import ConnectionError
-from ebaysdk.finding import Connection
+from yahoo_finance import Share
 
-try:
-    api = Connection(appid=settings.APP_ID, config_file=None)
-    response = api.execute('findItemsAdvanced', {'keywords': 'legos'})
+yahoo = Share('YHOO')
+# print(yahoo.get_open())
+# print(yahoo.get_price())
+# print(yahoo.get_trade_datetime())
+# print(yahoo.get_historical('2014-04-25', '2014-04-26'))
 
-    assert(response.reply.ack == 'Success')
-    assert(type(response.reply.timestamp) == datetime.datetime)
-    assert(type(response.reply.searchResult.item) == list)
+api_query = yahoo.get_historical('2017-03-01', '2017-03-05')
+query = api_query[0]
+# quote = Quote()
 
-    item = response.reply.searchResult.item[0]
-    assert(type(item.listingInfo.endTime) == datetime.datetime)
-    assert(type(response.dict()) == dict)
+# for snapshot in api_query:
+#     quote =
+#     snapshot['Adj_Close']
 
-except ConnectionError as e:
-    print(e)
-    print(e.response.dict())
+# pp = pprint.PrettyPrinter(indent=4)
+# pp.pprint(api_query)
 
-pp = pprint.PrettyPrinter(indent=4)
-pp.pprint(response.dict())
+# def add_quote_to_db(quotes):
+#     """
+#     :params events: A list of quotes, not a query_result. This is what you get
+#     when you do the following:
+#
+#         stubhub_response = apiqueries.search_events(query='Timberwolves',
+#                 groupingName='NBA Regular')
+#         events = stubhub_response.json()['events']
+#
+#     """
+#     for quote in quotes:
+#         if not event_exists(event['id']):
+#             dbsession.add(objectify_event(event))
+#     dbsession.commit()
 
