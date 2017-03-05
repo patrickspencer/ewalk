@@ -1,0 +1,13 @@
+[secrets]
+SECRET_KEY = x1i$$uf(i49(6i@*_i0sm3#jhipxnr7w3#-qtm2yagb-t43b+b
+
+[database]
+DATABASE_NAME = okapi_db
+DATABASE_USER = okapi
+DATABASE_PASSWORD = password
+DATABASE_HOST = localhost
+DATABASE_PORT =
+
+[general]
+DEBUG = False
+ALLOWED_HOSTS = 127.0.0.1
