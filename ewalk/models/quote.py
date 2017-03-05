@@ -14,12 +14,35 @@ class Quote(Base):
 
     id = Column(Integer, primary_key=True)
     datetime_accessed = Column(DateTime(timezone=True), index=True)
-    price = Column(Float)
+    open = Column(Float)
+    low = Column(Float)
+    high = Column(Float)
+    close = Column(Float)
+    adj_close = Column(Float)
+    symbol = Column(String)
+    volume = Column(Integer)
     # section_name = Column(Integer, ForeignKey(ListingSection.id), nullable=True)
 
     def __repr__(self):
-        return "<QuotePrice(datetime_accessed='%s',price='%s')>" \
-                % (self.datetime_accessed, self.price)
+        return "<QuotePrice( \
+                 datetime_accessed='%s', \
+                 open='%s', \
+                 low='%s', \
+                 high='%s', \
+                 close='%s', \
+                 adj_close='%s', \
+                 symbol='%s', \
+                 volume='%s' \
+                 )>" % (
+                 self.datetime_accessed,
+                 self.open,
+                 self.low,
+                 self.high,
+                 self.close,
+                 self.adj_close,
+                 self.symbol,
+                 self.volume
+                )
     @property
     def serialize(self):
        """
@@ -27,5 +50,11 @@ class Quote(Base):
        """
        return {
            'datetime_accessed': self.datetime_accessed,
-           'price': self.price,
+           'open': self.open,
+           'low': self.low,
+           'high': self.high,
+           'close': self.close,
+           'adj_close': self.adj_close,
+           'symbol': self.symbol,
+           'volume': self.volume,
        }
