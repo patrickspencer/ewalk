@@ -21,7 +21,7 @@ test_requirements = [
 setup(
     name='ewalk',
     version='0.1.0',
-    description="Machine learning project for Ebay prices",
+    description="Machine learning project for stock prices",
     long_description=readme + '\n\n' + history,
     author="Patrick Spencer",
     author_email='patrick.spencer@uky.edu',
