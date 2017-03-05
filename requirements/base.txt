@@ -13,3 +13,7 @@ psycopg2 == 2.6.1
 numpy == 1.10.4
 pytz == 2016.10
 ebaysdk == 2.1.4
+boto == 2.45.0
+pystan==2.14.0.0
+matplotlib==2.0.0
+yahoo-finance==1.4.0
