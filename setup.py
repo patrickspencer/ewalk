@@ -26,17 +26,7 @@ setup(
     author="Patrick Spencer",
     author_email='patrick.spencer@uky.edu',
     url='https://github.com/patrickspencer/ewalk',
-    packages=[
-        'ewalk',
-    ],
-    package_dir={'ewalk':
-                 'ewalk'},
-    entry_points={
-        'console_scripts': [
-            'ewalk=ewalk.cli:main'
-        ]
-    },
-    include_package_data=True,
+    py_modules = ['ewalk'],
     install_requires=requirements,
     zip_safe=False,
     keywords='ewalk',

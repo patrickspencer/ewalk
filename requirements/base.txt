@@ -7,7 +7,6 @@ tox==2.3.1
 coverage==4.1
 cryptography==1.7
 PyYAML==3.11
-sqlalchemy == 1.0.11
 alembic == 0.8.4
 psycopg2 == 2.6.1
 numpy == 1.10.4
@@ -17,3 +16,4 @@ boto == 2.45.0
 pystan==2.14.0.0
 matplotlib==2.0.0
 yahoo-finance==1.4.0
+sqlalchemy==1.1.6
