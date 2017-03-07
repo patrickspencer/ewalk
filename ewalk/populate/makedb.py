@@ -8,6 +8,6 @@ session = sessionmaker(bind=engine)
 Session = session()
 
 #this next line creates the database if it doesn't exists already
-models.Quote.metadata.create_all(engine)
 models.Symbol.metadata.create_all(engine)
+models.Quote.metadata.create_all(engine)
 
