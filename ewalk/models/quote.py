@@ -46,11 +46,12 @@ class Quote(Base):
 
 
     @staticmethod
-    def exists(date):
+    def exists(date, symbol):
         """
         Return True if event with datetime_accessed exists and False otherwise
         """
-        (ret, ), = dbsession.query(exists().where(Quote.date == date))
+        symbol_id = dbsession.query(Symbol).filter(Symbol.name == symbol).first().id
+        (ret, ), = dbsession.query(exists().where(Quote.date == date).where(Quote.symbol_id == symbol_id))
         return ret
 
     @property

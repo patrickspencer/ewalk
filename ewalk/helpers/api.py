@@ -20,16 +20,16 @@ def get_sym_id(name):
 
 def create_quote(quote):
     dt = datetime.datetime.strptime(quote['Date'], '%Y-%m-%d')
-    if not Quote.exists(dt):
+    if not Quote.exists(dt, quote['Symbol']):
         quote = Quote(
-                adj_close = q['Adj_Close'],
-                open = q['Open'],
-                close = q['Close'],
-                high = q['High'],
-                low = q['Low'],
-                volume = q['Volume'],
+                adj_close = quote['Adj_Close'],
+                open = quote['Open'],
+                close = quote['Close'],
+                high = quote['High'],
+                low = quote['Low'],
+                volume = quote['Volume'],
                 date = dt,
-                symbol_id = get_sym_id(q['Symbol']),
+                symbol_id = get_sym_id(quote['Symbol']),
                 )
         dbsession.add(quote)
         dbsession.commit()
