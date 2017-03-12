@@ -2,9 +2,9 @@
 
 import click
 import datetime
-import ewalk.settings
+import stockwalk.settings
 from yahoo_finance import Share
-from ewalk.models import Quote, Symbol, dbsession
+from stockwalk.models import Quote, Symbol, dbsession
 
 def create_sym(symbol):
     if not Symbol.exists(symbol):

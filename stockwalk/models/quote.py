@@ -1,7 +1,6 @@
-import ewalk
 from sqlalchemy import exists
-from ewalk.models.symbol import Symbol
-from ewalk.models import dbsession
+from stockwalk.models.symbol import Symbol
+from stockwalk.models import dbsession
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, DateTime, \
         String, ForeignKey, Float
@@ -10,7 +9,7 @@ Base = declarative_base()
 
 
 class Quote(Base):
-    __tablename__ = 'quotes'
+    __tablename__ = 'stockwalk_quotes'
 
     id = Column(Integer, primary_key=True)
     date = Column(DateTime(timezone=True), index=True)

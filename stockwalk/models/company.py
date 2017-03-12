@@ -1,5 +1,5 @@
 from sqlalchemy import exists
-from ewalk.models import dbsession
+from stockwalk.models import dbsession
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, DateTime, \
         String, ForeignKey, Float
@@ -7,11 +7,13 @@ from sqlalchemy import Column, Integer, DateTime, \
 Base = declarative_base()
 
 
-class Symbol(Base):
-    __tablename__ = 'symbols'
+class Company(Base):
+    __tablename__ = 'stockwalk_companies'
 
     id = Column(Integer, primary_key=True)
+    symbol = Column(String)
     name = Column(String)
+    sector = Column(String)
 
     def __repr__(self):
         return "<Symbol( \
@@ -19,7 +21,9 @@ class Symbol(Base):
                  name='%s', \
                  )>" % (
                  self.id,
+                 self.symbol,
                  self.name,
+                 self.sector,
                 )
 
     @staticmethod
@@ -27,7 +31,7 @@ class Symbol(Base):
         """
         Return True if symbol with datetime_accessed exists and False otherwise
         """
-        (ret, ), = dbsession.query(exists().where(Symbol.name == name))
+        (ret, ), = dbsession.query(exists().where(Symbol.symbol == symbol))
         return ret
 
     @property
@@ -36,5 +40,7 @@ class Symbol(Base):
        Return object data in easily serializable format
        """
        return {
-           'name': self.datetime_accessed,
+           'symbol': self.symbol,
+           'name': self.name,
+           'sector': self.sector,
        }

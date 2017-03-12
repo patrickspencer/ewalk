@@ -2,6 +2,6 @@
 
 __author__ = 'Patrick Spencer'
 __email__ = 'patrick.spencer@uky.edu'
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
-from ewalk.helpers.api import *
+from stockwalk.helpers.api import *
