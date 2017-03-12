@@ -10,4 +10,3 @@ Session = session()
 #this next line creates the database if it doesn't exists already
 models.Company.metadata.create_all(engine)
 models.Quote.metadata.create_all(engine)
-

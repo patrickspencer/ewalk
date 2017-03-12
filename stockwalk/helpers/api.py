@@ -4,19 +4,19 @@ import click
 import datetime
 import stockwalk.settings
 from yahoo_finance import Share
-from stockwalk.models import Quote, Symbol, dbsession
+from stockwalk.models import Quote, Company, dbsession
 
 def create_sym(symbol):
-    if not Symbol.exists(symbol):
-        symbol = Symbol(
-                 name = symbol,
+    if not Company.exists(symbol):
+        company = Company(
+                 symbol = symbol,
                  )
-        dbsession.add(symbol)
+        dbsession.add(company)
         dbsession.commit()
 
 def get_sym_id(name):
-    return dbsession.query(Symbol) \
-              .filter(Symbol.name == name).first().id
+    return dbsession.query(Company) \
+              .filter(company.symbol == symbol).first().id
 
 def create_quote(quote):
     dt = datetime.datetime.strptime(quote['Date'], '%Y-%m-%d')

@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-test_ewalk
+test_stockwalk
 ----------------------------------
 
-Tests for `ewalk` module.
+Tests for `stockwalk` module.
 """
 
 
@@ -14,8 +14,8 @@ import unittest
 from contextlib import contextmanager
 from click.testing import CliRunner
 
-from ewalk import ewalk
-from ewalk import cli
+from stockwalk import stockwalk
+from stockwalk import cli
 
 
 
@@ -34,7 +34,7 @@ class TestEwalk(unittest.TestCase):
         runner = CliRunner()
         result = runner.invoke(cli.main)
         assert result.exit_code == 0
-        assert 'ewalk.cli.main' in result.output
+        assert 'stockwalk.cli.main' in result.output
         help_result = runner.invoke(cli.main, ['--help'])
         assert help_result.exit_code == 0
         assert '--help  Show this message and exit.' in help_result.output
