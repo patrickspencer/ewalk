@@ -10,7 +10,7 @@ def get_company_id(symbol):
 def create_quote(quote):
     date = datetime.datetime.strptime(quote['Date'], '%Y-%m-%d')
     if not Quote.exists(date, quote['Symbol']):
-        quote = Quote(
+        q = Quote(
                 adj_close = quote['Adj_Close'],
                 open = quote['Open'],
                 close = quote['Close'],
@@ -20,7 +20,7 @@ def create_quote(quote):
                 date = date,
                 company_id = get_company_id(quote['Symbol']),
                 )
-        dbsession.add(quote)
+        dbsession.add(q)
         dbsession.commit()
 
 def write_quotes_to_db(symbol):
@@ -30,6 +30,7 @@ def write_quotes_to_db(symbol):
     for q in api_query:
         create_quote(q)
 
-symbols = dbsession.query(Company).all()
-for symbol in symbols:
-    write_quotes_to_db(symbol.symbol)
+companies = dbsession.query(Company).all()
+for company in companies:
+    write_quotes_to_db(company.symbol)
+    print('Added quotes for ' + company.symbol + '; company_id: ' + str(company.id))
