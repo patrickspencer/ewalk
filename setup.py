@@ -19,17 +19,17 @@ test_requirements = [
 ]
 
 setup(
-    name='ewalk',
-    version='0.1.0',
+    name='stockwalk',
+    version='0.2.0',
     description="Machine learning project for stock prices",
     long_description=readme + '\n\n' + history,
     author="Patrick Spencer",
     author_email='patrick.spencer@uky.edu',
-    url='https://github.com/patrickspencer/ewalk',
-    py_modules = ['ewalk'],
+    url='https://github.com/patrickspencer/stockwalk',
+    py_modules = ['stockwalk'],
     install_requires=requirements,
     zip_safe=False,
-    keywords='ewalk',
+    keywords='stockwalk',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
