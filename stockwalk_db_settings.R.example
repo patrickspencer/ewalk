@@ -1,0 +1,5 @@
+db_host <- "localhost"
+db_name <- "okapi_db"
+db_user <- "okapi"
+db_pass <- "password"
+db_port <- 5432
