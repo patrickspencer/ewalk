@@ -20,7 +20,6 @@ class Quote(Base):
     adj_close = Column(Float)
     company_id = Column(Integer, ForeignKey(Company.id), nullable=False)
     volume = Column(Integer)
-    # section_name = Column(Integer, ForeignKey(ListingSection.id), nullable=True)
 
     def __repr__(self):
         return "<Quote(date='%s', open='%s', low='%s', high='%s', close='%s', adj_close='%s', company='%s', volume='%s')>" % (
