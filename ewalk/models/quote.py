@@ -24,23 +24,14 @@ class Quote(Base):
     # section_name = Column(Integer, ForeignKey(ListingSection.id), nullable=True)
 
     def __repr__(self):
-        return "<Quote( \
-                 datetime_accessed='%s', \
-                 open='%s', \
-                 low='%s', \
-                 high='%s', \
-                 close='%s', \
-                 adj_close='%s', \
-                 symbol='%s', \
-                 volume='%s' \
-                 )>" % (
-                 self.datetime_accessed,
+        return "<Quote(date='%s', open='%s', low='%s', high='%s', close='%s', adj_close='%s', symbol='%s', volume='%s')>" % (
+                 self.date,
                  self.open,
                  self.low,
                  self.high,
                  self.close,
                  self.adj_close,
-                 self.symbol,
+                 self.symbol_id,
                  self.volume
                 )
 
@@ -60,7 +51,7 @@ class Quote(Base):
        Return object data in easily serializable format
        """
        return {
-           'datetime_accessed': self.datetime_accessed,
+           'date': self.date,
            'open': self.open,
            'low': self.low,
            'high': self.high,
