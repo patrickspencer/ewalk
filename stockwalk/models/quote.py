@@ -1,5 +1,5 @@
 from sqlalchemy import exists
-from stockwalk.models.symbol import Company
+from stockwalk.models.company import Company
 from stockwalk.models import dbsession
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, DateTime, \

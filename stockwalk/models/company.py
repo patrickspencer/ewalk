@@ -16,10 +16,7 @@ class Company(Base):
     sector = Column(String)
 
     def __repr__(self):
-        return "<Company( \
-                 id='%s', \
-                 name='%s', \
-                 )>" % (
+        return "<Company(id='%s', symbol='%s', name='%s', sector='%s')>" % (
                  self.id,
                  self.symbol,
                  self.name,
@@ -27,7 +24,7 @@ class Company(Base):
                 )
 
     @staticmethod
-    def exists(name):
+    def exists(symbol):
         """
         Return True if symbol with datetime_accessed exists and False otherwise
         """
