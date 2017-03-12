@@ -16,7 +16,7 @@ class Company(Base):
     sector = Column(String)
 
     def __repr__(self):
-        return "<Symbol( \
+        return "<Company( \
                  id='%s', \
                  name='%s', \
                  )>" % (
@@ -31,7 +31,7 @@ class Company(Base):
         """
         Return True if symbol with datetime_accessed exists and False otherwise
         """
-        (ret, ), = dbsession.query(exists().where(Symbol.symbol == symbol))
+        (ret, ), = dbsession.query(exists().where(Company.symbol == symbol))
         return ret
 
     @property
