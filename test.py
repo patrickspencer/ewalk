@@ -3,6 +3,6 @@
 from ewalk.models import dbsession
 from ewalk import create_quote
 from yahoo_finance import Share
-from ewalk.models import Quote, Symbol, dbsession
+from stockwalk.models import Quote, Company, dbsession
 
-print(dbsession.query(Symbol).filter(Symbol.name == 'YHOO').first().id)
+print(dbsession.query(Company).filter(Symbol.name == 'YHOO').first().id)
