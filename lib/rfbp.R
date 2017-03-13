@@ -21,7 +21,10 @@ con <- dbConnect(drv, dbname = db_name,
 symbol <- args[1]
 query = paste("SELECT date,", args[2], " FROM stockwalk_quotes JOIN stockwalk_companies ON stockwalk_companies.id = stockwalk_quotes.company_id WHERE stockwalk_companies.symbol = '", symbol, "';", sep="")
 
+print(query)
 df <- dbGetQuery(con, query)
+cnames <- colnames(df)
+print(paste("colnames: ", cnames))
 colnames(df) <- c("ds", "y")
 
 # df <- read.csv('../data/peyton.csv') %>%

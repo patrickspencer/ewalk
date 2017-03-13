@@ -1,5 +1,5 @@
 from subprocess import call
-from stockwalk.models import dbsession, Company
+from stockwalk.models import dbsession, Company, Quote
 from os.path import abspath, dirname, join, expanduser, isfile
 
 # lib_dir is where rfbp.R is located
@@ -10,9 +10,11 @@ attribute = "close"
 
 graph_dir = join(expanduser("~"), "stockwalk_graphs")
 
-symbols = dbsession.query(Company.symbol).all()
+# Get company_id of companies who we have at least one quote for
+symbols = dbsession.query(Company.id, Company.symbol).filter(Company.id == Quote.company_id).distinct().all()
+
 for s in symbols:
-    symbol = s[0]
+    symbol = s[1]
     file_name = symbol + "_" + attribute + ".png"
     file_full = join(graph_dir, file_name)
     if not isfile(file_full):
