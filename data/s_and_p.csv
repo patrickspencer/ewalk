@@ -65,6 +65,7 @@ BAX,Baxter International Inc.,Health Care
 BBT,BB&T Corporation,Financials
 BDX,Becton Dickinson,Health Care
 BBBY,Bed Bath & Beyond,Consumer Discretionary
+BRK-B,Berkshire Hathaway,Financials
 BBY,Best Buy Co. Inc.,Consumer Discretionary
 BIIB,BIOGEN IDEC Inc.,Health Care
 BLK,BlackRock,Financials
@@ -75,6 +76,7 @@ BXP,Boston Properties,Real Estate
 BSX,Boston Scientific,Health Care
 BMY,Bristol-Myers Squibb,Health Care
 AVGO,Broadcom,Information Technology
+BF-B,Brown-Forman Corp.,Consumer Staples
 CHRW,C. H. Robinson Worldwide,Industrials
 CA,"CA, Inc.",Information Technology
 COG,Cabot Oil & Gas,Energy
@@ -194,7 +196,6 @@ FMC,FMC Corporation,Materials
 FTI,FMC Technologies Inc.,Energy
 FL,Foot Locker Inc,Consumer Discretionary
 F,Ford Motor,Consumer Discretionary
-FTV,Fortive Corp,Industrials
 FBHS,Fortune Brands Home & Security,Industrials
 BEN,Franklin Resources,Financials
 FCX,Freeport-McMoRan Inc.,Materials
