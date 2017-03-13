@@ -38,7 +38,10 @@ def write_quotes_to_db(symbol):
     end_date = '2017-03-05'
     """ TODO: fix this to see if quote with date and symbol exists """
     if not Quote.symbol_exists(symbol):
-        api_query = Share(symbol).get_historical(start_date, end_date)
+        try:
+            api_query = Share(symbol).get_historical(start_date, end_date)
+        except AttributeError:
+            print("Attribute error")
         for q in api_query:
             if q:
                 create_quote(q)
